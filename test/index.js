@@ -15,3 +15,9 @@ const Vue = {
 };
 
 injector.install(Vue);
+
+var $copy = injector.get('$copy');
+var x = { foo : 'bah' };
+var y = $copy(x);
+console.log(y);
+console.log(x === y);
