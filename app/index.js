@@ -36,6 +36,8 @@ var Injector = Jpex.extend({
           resolveToTarget(this.$options.directives, this.$options.directives, cached);
         }
       });
+
+      this.get = $resolve;
     };
 
     this.service = function () {
