@@ -87,3 +87,15 @@ injector.service('myService', ['$window'], MyService);
 
 
 vue-inject uses [jpex-web](https://www.npmjs.com/package/jpex-web) which in turn is a browser-safe variant of [jpex](https://www.npmjs.com/package/jpex), therefore all of the same functionality is available. The injector object has the ability to register factories, services, constants, and enums. It may be useful to have a read of the jpex documentation in order to understand the differences between these factory types.
+
+
+You can access the resolver directly via the `get` property:
+```javascript
+import injector from 'vue-inject';
+let $copy = injector.get('$copy');
+```
+
+If you have multiple Vue applications, you can create a new injector using `spawn`. By default this will create a brand new injector but if you want to share registered services/factories between the two, pass `true` into the function.
+```javascript
+let injector2 = injector.spawn();
+```
