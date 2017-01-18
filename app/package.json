@@ -1,6 +1,6 @@
 {
   "name": "vue-inject",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Dependency Injection for Vue",
   "main": "index.js",
   "repository": {
@@ -14,6 +14,6 @@
   },
   "homepage": "https://github.com/jackmellis/vue-inject#readme",
   "dependencies": {
-    "jpex-web": "^0.1.2"
+    "jpex-web": "^0.1.3"
   }
 }

@@ -1,6 +1,6 @@
 var Jpex = require('jpex-web');
 function createInjector(){
-  return Jpex.extend({
+  let Injector = Jpex.extend({
     dependencies : ['$resolve', '$typeof', '$copy'],
     constructor : function ($resolve, $typeof, $copy) {
       function resolveToTarget(dependencies, target, cached) {
@@ -64,6 +64,7 @@ function createInjector(){
       };
     }
   });
+  return Injector;
 }
 
 var Injector = createInjector();
