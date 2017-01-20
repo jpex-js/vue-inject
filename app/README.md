@@ -1,12 +1,12 @@
 # vue-inject
 Dependency Injection for vue
 
-Install...  
+## Install...  
 ```
 npm install vue-inject --save
 ```
 
-Tell Vue about vue-inject...  
+## Tell Vue about vue-inject...  
 ```javascript
 // main.js
 import injector from 'vue-inject';
@@ -15,7 +15,7 @@ Vue.use(injector);
 ```
 
 
-Register your services...  
+## Register your services...  
 ```javascript
 // myService.js
 import injector from 'vue-inject';
@@ -25,7 +25,7 @@ class MyService{
 injector.service('myService', MyService);
 ```
 
-Declare your dependencies...  
+## Declare your dependencies...  
 ```javascript
 // myComponent.vue
 <script>
@@ -95,7 +95,13 @@ import injector from 'vue-inject';
 let $copy = injector.get('$copy');
 ```
 
-If you have multiple Vue applications, you can create a new injector using `spawn`. By default this will create a brand new injector but if you want to share registered services/factories between the two, pass `true` into the function.
+If you have multiple Vue applications, you can create a new injector using `spawn`.
 ```javascript
 let injector2 = injector.spawn();
 ```
+By default this will create a brand new injector but if you want to share registered services/factories between the two, pass `true` into the function. This will create a new injector that *inherits* the previous one.  
+
+You can remove all factories registered on the injector by calling `injector.reset()`.  
+*note that if you are using an inherited injector (i.e. by calling injector.spawn(true);) it will not remove factories registered on the parent injector.*  
+
+If you have singleton factories that need to be reset (such as between unit tests) you can call `injector.clearCache()`. The factories will still be registered but will be re-resolved the next time they are requested.

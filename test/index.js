@@ -16,3 +16,20 @@ const Vue = {
 };
 
 injector.install(Vue);
+
+injector.constant('foo', 'bah');
+console.log(injector.constructor._factories.foo);
+injector.reset();
+console.log(injector.constructor._factories.foo);
+
+injector.factory('forever', function(){
+  return {};
+}, true);
+
+let a = injector.get('forever');
+let b = injector.get('forever');
+console.log(a === b);
+
+injector.clearCache();
+let c = injector.get('forever');
+console.log(a !== c);
