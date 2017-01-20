@@ -47,20 +47,42 @@ function createInjector(){
         return new NewInjector();
       };
 
+      this.neverCache = false;
+
       this.service = function () {
-        return Injector.Register.Service.apply(null, arguments);
+        var result = Injector.Register.Service.apply(null, arguments);
+        if (this.neverCache){
+          result.lifecycle.none();
+        }
+        return result;
       };
       this.factory = function () {
-        return Injector.Register.Factory.apply(null, arguments);
+        var result = Injector.Register.Factory.apply(null, arguments);
+        if (this.neverCache){
+          result.lifecycle.none();
+        }
+        return result;
       };
       this.constant = function () {
-        return Injector.Register.Constant.apply(null, arguments);
+        var result = Injector.Register.Constant.apply(null, arguments);
+        if (this.neverCache){
+          result.lifecycle.none();
+        }
+        return result;
       };
       this.interface = function () {
-        return Injector.Register.Interface.apply(null, arguments);
+        var result = Injector.Register.Interface.apply(null, arguments);
+        if (this.neverCache){
+          result.lifecycle.none();
+        }
+        return result;
       };
       this.enum = function () {
-        return Injector.Register.Enum.apply(null, arguments);
+        var result = Injector.Register.Enum.apply(null, arguments);
+        if (this.neverCache){
+          result.lifecycle.none();
+        }
+        return result;
       };
     }
   });

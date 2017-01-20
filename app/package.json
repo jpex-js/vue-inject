@@ -1,6 +1,6 @@
 {
   "name": "vue-inject",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Dependency Injection for Vue",
   "main": "index.js",
   "repository": {
