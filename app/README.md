@@ -27,7 +27,7 @@ injector.service('myService', MyService);
 ```
 
 ### Declare your dependencies...  
-```javascript
+```html
 // myComponent.vue
 <script>
   export default {
