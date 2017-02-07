@@ -47,6 +47,9 @@ function createInjector(Parent){
         Object.keys(Injector._factories).forEach(function (k) {
           delete Injector._factories[k];
         });
+        Object.keys(Injector._resolved).forEach(function (k) {
+          delete Injector._resolved[k];
+        });
       };
 
       this.clearCache = function (forever) {
@@ -55,6 +58,9 @@ function createInjector(Parent){
           if (forever){
             Injector._factories[k].lifecycle = 4; // None
           }
+        });
+        Object.keys(Injector._resolved).forEach(function (k) {
+          delete Injector._resolved[k];
         });
       };
 
