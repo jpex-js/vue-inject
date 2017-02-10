@@ -165,7 +165,7 @@ injector.factory('myFactory', ['injected'], function(injected){
 #### constant(name, value);
 Registers a constant value.
 ```javascript
-injector.factory('myConstant', { foo : 'bah' })
+injector.constant('myConstant', { foo : 'bah' })
 ```
 #### enum(name, valueArray)
 Registers an enumerable object. The valueArray should be a list of values. The injected value is an object that contains each value as a key and a corresponding number as its value.
