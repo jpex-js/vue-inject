@@ -7,7 +7,12 @@
     "test": "ava",
     "watch": "ava --watch",
     "coverage": "nyc npm test",
-    "lint" : "eslint ./src"
+    "lint": "eslint ./src",
+    "publish-please": "publish-please",
+    "prepublish": "publish-please guard",
+    "build": "node node_modules/jpex-build-tools/build --entry ./src --output ./dist/vue-inject.js --name injector && node node_modules/jpex-build-tools/build --entry ./src --output ./dist/vue-inject.min.js --name injector --minify",
+    "lcov-fix": "node node_modules/jpex-build-tools/lcov-fix",
+    "travis-prepublish": "node node_modules/jpex-build-tools/travis-prepublish"
   },
   "ava": {
     "files": [
@@ -37,7 +42,9 @@
   "devDependencies": {
     "ava": "^0.18.2",
     "eslint": "^3.18.0",
+    "jpex-build-tools": "github:jpex-js/jpex-build-tools",
     "nyc": "^10.1.2",
+    "publish-please": "^2.3.0",
     "sinon": "^2.1.0"
   }
 }

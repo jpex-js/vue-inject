@@ -4,7 +4,7 @@
   "branches" : 80,
   "include" : ["src/**/*.js"],
   "extension" : [".js", ".vue"],
-  "reporter" : ["html", "text-summary"],
+  "reporter" : ["html", "lcov", "text-summary"],
   "cache" : false,
   "all" : true,
   "check-coverage" : true

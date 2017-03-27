@@ -1,5 +1,12 @@
+# dev files
+.codeclimate.yml
+.travis.yml
+.eslintrc.json
+.nycrc
+.publishrc
+spec
 lcov.info
-dist
+
 
 # Logs
 logs

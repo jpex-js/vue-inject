@@ -1,4 +1,4 @@
-var Jpex = require('jpex');
+var Jpex = require('jpex/src');
 var jpexConstants = require('jpex/src/constants');
 var plugin = require('./plugin');
 var install = require('./install');
