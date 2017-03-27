@@ -1,6 +1,11 @@
 # vue-inject
 Dependency Injection for vue
 
+[![npm version](https://badge.fury.io/js/vue-inject.svg)](https://badge.fury.io/js/vue-inject)
+[![Build Status](https://travis-ci.org/jpex-js/vue-inject.svg?branch=master)](https://travis-ci.org/jpex-js/vue-inject)
+[![Code Climate](https://codeclimate.com/github/jpex-js/vue-inject/badges/gpa.svg)](https://codeclimate.com/github/jpex-js/vue-inject)
+[![Test Coverage](https://codeclimate.com/github/jpex-js/vue-inject/badges/coverage.svg)](https://codeclimate.com/github/jpex-js/vue-inject/coverage)
+
 ## Usage  
 ### Install...  
 ```
