@@ -1,0 +1,43 @@
+{
+  "name": "vue-inject",
+  "version": "0.4.0",
+  "description": "Dependency Injection for Vue",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "ava",
+    "watch": "ava --watch",
+    "coverage": "nyc npm test",
+    "lint" : "eslint ./src"
+  },
+  "ava": {
+    "files": [
+      "spec/**/*.spec.js"
+    ],
+    "source": [
+      "src/**/*.js"
+    ],
+    "require": [],
+    "verbose": false,
+    "concurrency": 20
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpex-js/vue-inject.git"
+  },
+  "author": "Jack Ellis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jpex-js/vue-inject/issues"
+  },
+  "homepage": "https://github.com/jpex-js/vue-inject#readme",
+  "dependencies": {
+    "jpex": "^2.0.0",
+    "jpex-web": "^2.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.18.2",
+    "eslint": "^3.18.0",
+    "nyc": "^10.1.2",
+    "sinon": "^2.1.0"
+  }
+}
