@@ -3,6 +3,15 @@ module.exports = function (Vue) {
 
   var $typeof = this.$resolve('$typeof');
 
+  function setProperty(target, name, value) {
+    Object.defineProperty(target, name, {
+      enumerable : true,
+      configurable : true,
+      writable : true,
+      value : value
+    });
+  }
+
   function resolveToTarget(dependencies, target, named) {
     if (!dependencies){
       return;
@@ -12,7 +21,7 @@ module.exports = function (Vue) {
       .forEach(function (dependency) {
         switch ($typeof(dependency)){
         case 'string': // resolve dependency and attach to the same-named property
-          target[dependency] = self.$resolve(dependency, named);
+          setProperty(target, dependency, self.$resolve(dependency, named));
           break;
         case 'object': // resolve each property and use the key as the property name
           // Aliases
@@ -20,7 +29,7 @@ module.exports = function (Vue) {
             .forEach(function (key) {
               var value = dependency[key];
               if ($typeof(value) === 'string'){
-                target[key] = self.$resolve(value, named);
+                setProperty(target, key, self.$resolve(value, named));
               }
             });
           break;
