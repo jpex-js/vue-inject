@@ -148,6 +148,12 @@ The injector must be regstered on the Vue class:
 ```javascript
 Vue.use(injector);
 ```
+You can supply an options object to determine which properties will be injected.
+```js
+Vue.use(injector, { depnedencies: true, mixins: true, directives: true, components: true });
+```
+By default only `depnedencies` is enabled.
+
 #### service(name, [dependencies], constructor)
 Registers a service. A service takes a constructor function (or an ES6 class). When a service is injected into a component, the constructor is instantiated.  
 The dependencies option determine which dependencies to inject into the constructor. These will be passed into the function in the same order.
@@ -266,6 +272,8 @@ An object allows you to specify an alias for a factory.
 dependencies : { myAlias : 'myFactory' }
 ```
 then in your component you can access the injected *myFactory* instance via `this.myAlias`.
+
+> For the following methods, you must enable their related options when calling Vue.use
 
 #### components
 If you register components on the injector you can then inject them into the components property:

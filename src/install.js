@@ -1,4 +1,5 @@
-module.exports = function (Vue) {
+module.exports = function (Vue, options) {
+  options = options || {};
   var self = this;
 
   var $typeof = this.$resolve('$typeof');
@@ -40,11 +41,19 @@ module.exports = function (Vue) {
   Vue.mixin({
     beforeCreate : function () {
       var named = { $context : this };
-      resolveToTarget(this.dependencies, this, named);
-      resolveToTarget(this.$options.dependencies, this, named);
-      resolveToTarget(this.$options.components, this.$options.components, named);
-      resolveToTarget(this.$options.mixins, this.$options.mixins, named);
-      resolveToTarget(this.$options.directives, this.$options.directives, named);
+      if (options.dependencies !== false) {
+        resolveToTarget(this.dependencies, this, named);
+        resolveToTarget(this.$options.dependencies, this, named);
+      }
+      if (options.components) {
+        resolveToTarget(this.$options.components, this.$options.components, named);
+      }
+      if (options.mixins) {
+        resolveToTarget(this.$options.mixins, this.$options.mixins, named);
+      }
+      if (options.directives) {
+        resolveToTarget(this.$options.directives, this.$options.directives, named);
+      }
     }
   });
 };

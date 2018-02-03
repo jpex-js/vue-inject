@@ -58,7 +58,7 @@ test('resolves components', function (t) {
 
   vue.$options.components = {test : 'factory'};
 
-  vue.use(injector);
+  vue.use(injector, { components: true });
 
   t.is(vue.$options.components.test, 'resolved!');
 });
@@ -68,7 +68,7 @@ test('ignores real components', function (t) {
 
   vue.$options.components = {real, fake : 'factory'};
 
-  vue.use(injector);
+  vue.use(injector, { components: true });
 
   t.is(vue.$options.components.real, real);
   t.is(vue.$options.components.fake, 'resolved!');
@@ -79,7 +79,7 @@ test('resolves mixins', function (t) {
 
   vue.$options.mixins = {factory : 'factory'};
 
-  vue.use(injector);
+  vue.use(injector, { mixins: true });
 
   t.is(vue.$options.mixins.factory, 'resolved!');
 });
@@ -89,7 +89,7 @@ test('resolves directives', function (t) {
 
   vue.$options.directives = {factory : 'factory'};
 
-  vue.use(injector);
+  vue.use(injector, { directives: true });
 
   t.is(vue.$options.directives.factory, 'resolved!');
 });
