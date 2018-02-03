@@ -226,6 +226,9 @@ let injector2 = injector.spawn();
 ```
 By default this will create a brand new injector, but if you want to share registered services/factories between the two, pass `true` into the function. This will create a new injector that *inherits* the previous one. Any factories registered on the first injector will be available to the second, but not vice versa.
 
+#### strict
+If set to `false` then all dependencies will be made optional. If a component's dependency cannot be found, rather than throwing an error it will just be set to `undefined`. Not that this does not affect the `get` function.
+
 ### Lifecycle
 When registering a factory or service, it's possible to determine the lifecycle.
 *As of v0.4, the default lifecycle is set to `class`*.

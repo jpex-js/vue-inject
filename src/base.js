@@ -34,5 +34,8 @@ Base.spawn = function (extend) {
   }
 };
 
+// Allow setting a soft mode
+Base.strict = true;
+
 // Install method used by Vue.use
 Base.install = install;

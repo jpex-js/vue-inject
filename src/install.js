@@ -3,6 +3,17 @@ module.exports = function (Vue, options) {
   var self = this;
 
   var $typeof = this.$resolve('$typeof');
+  var strict = this.strict;
+
+  function fixName(name) {
+    if (strict) {
+      return name;
+    }
+    if (name.charAt(0) === '_' && name.substr(name.length -1) === '_') {
+      return name;
+    }
+    return '_' + name + '_';
+  }
 
   function setProperty(target, name, value) {
     Object.defineProperty(target, name, {
@@ -22,7 +33,7 @@ module.exports = function (Vue, options) {
       .forEach(function (dependency) {
         switch ($typeof(dependency)){
         case 'string': // resolve dependency and attach to the same-named property
-          setProperty(target, dependency, self.$resolve(dependency, named));
+          setProperty(target, dependency, self.$resolve(fixName(dependency), named));
           break;
         case 'object': // resolve each property and use the key as the property name
           // Aliases
@@ -30,7 +41,7 @@ module.exports = function (Vue, options) {
             .forEach(function (key) {
               var value = dependency[key];
               if ($typeof(value) === 'string'){
-                setProperty(target, key, self.$resolve(value, named));
+                setProperty(target, key, self.$resolve(fixName(value), named));
               }
             });
           break;

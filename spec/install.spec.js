@@ -136,3 +136,22 @@ test('sets option merging strategies', function (t) {
 
   t.deepEqual(merged, [ 'apple', { banana: 'b'}]);
 });
+
+// strict
+test('strict throws when a dep is not found', function (t) {
+  let {injector, vue} = t.context;
+
+  vue.dependencies = 'foofactory';
+
+  t.throws(() => vue.use(injector));
+  t.throws(() => injector.get('foofactory'));
+});
+test('non-strict does not throw for missing deps', function (t) {
+  let {injector, vue} = t.context;
+
+  vue.dependencies = 'foofactory';
+  injector.strict = false;
+
+  t.notThrows(() => vue.use(injector));
+  t.throws(() => injector.get('foofactory'));
+});
