@@ -56,7 +56,7 @@ module.exports = function (Vue, options) {
     if (!fromVal) {
       return toVal;
     }
-    return [].concat(toVal).concat(fromVal).filter((v, i, a) => a.indexOf(v) === i);
+    return [].concat(toVal).concat(fromVal).filter(function(v, i, a) { return a.indexOf(v) === i; });
   };
 
   Vue.mixin({
