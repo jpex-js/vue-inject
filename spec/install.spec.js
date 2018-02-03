@@ -104,7 +104,7 @@ test('has $context constant', function (t) {
   t.is(vue.self, vue);
 });
 
- test('resolves factories as singletons', function (t) {
+test('resolves factories as singletons', function (t) {
   let {injector, vue} = t.context;
 
   injector.factory('factory', () => ({}));
@@ -123,4 +123,16 @@ test('has $context constant', function (t) {
 
   t.is(vue2.a, vue.a);
   t.is(vue2.b, vue.a);
+});
+
+test('sets option merging strategies', function (t) {
+  let {injector, vue} = t.context;
+
+  vue.use(injector);
+
+  t.is(typeof vue.config.optionMergeStrategies.dependencies, 'function');
+
+  const merged = vue.config.optionMergeStrategies.dependencies(['apple'], { banana: 'b'});
+
+  t.deepEqual(merged, [ 'apple', { banana: 'b'}]);
 });

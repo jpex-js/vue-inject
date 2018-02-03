@@ -38,6 +38,16 @@ module.exports = function (Vue, options) {
       });
   }
 
+  Vue.config.optionMergeStrategies.dependencies = Vue.config.optionMergeStrategies.depnedencies || function (toVal, fromVal) {
+    if (!toVal) {
+      return fromVal;
+    }
+    if (!fromVal) {
+      return toVal;
+    }
+    return [].concat(toVal).concat(fromVal).filter((v, i, a) => a.indexOf(v) === i);
+  };
+
   Vue.mixin({
     beforeCreate : function () {
       var named = { $context : this };

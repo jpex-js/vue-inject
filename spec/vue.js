@@ -20,7 +20,10 @@ module.exports = function () {
         config[key].call(this);
       });
     },
-    $options : {}
+    $options : {},
+    config: {
+      optionMergeStrategies: {},
+    },
   };
   return Vue;
 };
