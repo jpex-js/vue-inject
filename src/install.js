@@ -49,7 +49,15 @@ module.exports = function (Vue, options) {
       });
   }
 
-  Vue.config.optionMergeStrategies.dependencies = Vue.config.optionMergeStrategies.depnedencies || function (toVal, fromVal) {
+  function getOptionMergeStrategies(Vue) {
+    while (Vue && !Vue.config) {
+      Vue = Vue.super;
+    }
+    return (Vue && Vue.config && Vue.config.optionMergeStrategies) || {};
+  }
+
+  var mergeStrategies = getOptionMergeStrategies(Vue);
+  mergeStrategies.dependencies = mergeStrategies.depnedencies || function (toVal, fromVal) {
     if (!toVal) {
       return fromVal;
     }

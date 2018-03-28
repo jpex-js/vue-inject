@@ -1,3 +1,6 @@
+## 2.0.1
+- Fixed an issue where doing `Vue.extend().use(vueInject)` meant vue inject could not find `optionMergeStrategies`
+
 ## 2.0.0
 - Injecting components/mixins/directives is now optional
 - There is now a default merging strategy for when using mixins with dependencies
