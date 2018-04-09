@@ -229,6 +229,40 @@ By default this will create a brand new injector, but if you want to share regis
 #### strict
 If set to `false` then all dependencies will be made optional. If a component's dependency cannot be found, rather than throwing an error it will just be set to `undefined`. Not that this does not affect the `get` function.
 
+#### encase
+```js
+(
+  dependencies?: Array<string>,
+  fn: (...deps) => Function
+)
+```
+Encase allows you to wrap any function in an outer function. This allows you to inject dependencies (at runtime) but the original function signature will remain the same.
+
+In the context of a Vue application, this method comes into its own when writnig Vuex actions. For example, the following action:
+
+```js
+import axios from 'axios';
+
+const actions = {
+  FETCH: ({ commit }) => {
+    axios.get('/my/api').then((response) => {
+      commit('FETCHED', response.data);
+    });
+  },
+};
+```
+can be rewritten as:
+```js
+const actions = {
+  FETCH: encase([ 'axios' ], (axios) => ({ commit }) => {
+    axios.get('/my-api').then((response) => {
+      commit('FETCHED', response.data);
+    });
+  }),
+};
+```
+now this does add a little more code to the function, but it means we've got proper dependency injection per action! And Vuex doesn't even need to know about it.
+
 ### Lifecycle
 When registering a factory or service, it's possible to determine the lifecycle.
 *As of v0.4, the default lifecycle is set to `class`*.

@@ -17,6 +17,13 @@ module.exports = {
             return this.$clearCache;
           }
         },
+        encase: {
+          enumerable: true,
+          configurable: true,
+          get: function () {
+            return this.$encase;
+          }
+        },
         factory : {
           enumerable : true,
           configurable : true,
@@ -44,7 +51,7 @@ module.exports = {
           get : function () {
             return this.register.decorator;
           }
-        }
+        },
       });
     });
   }

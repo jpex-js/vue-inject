@@ -1,3 +1,6 @@
+## 2.1.0
+- Added `encase` method
+
 ## 2.0.1
 - Fixed an issue where doing `Vue.extend().use(vueInject)` meant vue inject could not find `optionMergeStrategies`
 
