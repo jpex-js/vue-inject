@@ -1,6 +1,6 @@
 {
   "name": "vue-inject",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Dependency Injection for Vue",
   "main": "src/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "coverage": "nyc npm test",
     "lint": "eslint ./src",
     "publish-please": "publish-please",
-    "prepublish": "publish-please guard",
+    "prepublishOnly": "publish-please guard",
     "build": "node node_modules/jpex-build-tools/build --entry ./src --output ./dist/vue-inject.js --name injector && node node_modules/jpex-build-tools/build --entry ./src --output ./dist/vue-inject.min.js --name injector --minify",
     "lcov-fix": "node node_modules/jpex-build-tools/lcov-fix",
     "travis-prepublish": "node node_modules/jpex-build-tools/travis-prepublish"
@@ -30,7 +30,7 @@
     "url": "git+https://github.com/jpex-js/vue-inject.git"
   },
   "author": "Jack Ellis",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/jpex-js/vue-inject/issues"
   },
