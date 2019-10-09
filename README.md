@@ -150,9 +150,9 @@ Vue.use(injector);
 ```
 You can supply an options object to determine which properties will be injected.
 ```js
-Vue.use(injector, { depnedencies: true, mixins: true, directives: true, components: true });
+Vue.use(injector, { dependencies: true, mixins: true, directives: true, components: true });
 ```
-By default only `depnedencies` is enabled.
+By default only `dependencies` is enabled.
 
 #### service(name, [dependencies], constructor)
 Registers a service. A service takes a constructor function (or an ES6 class). When a service is injected into a component, the constructor is instantiated.  
