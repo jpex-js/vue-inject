@@ -40,7 +40,7 @@
     "jpex-web": "^2.0.0"
   },
   "devDependencies": {
-    "ava": "^0.18.2",
+    "ava": "^5.1.0",
     "eslint": "^3.18.0",
     "jpex-build-tools": "github:jpex-js/jpex-build-tools",
     "nyc": "^10.1.2",
